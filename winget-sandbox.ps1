@@ -32,7 +32,7 @@ Add-AppxPackage -Path Microsoft.VCLibs.x64.14.00.Desktop.appx -ErrorAction Silen
 
 #Download and extract Nuget
 Write-Host
-Write-Host Installing Nuget...
+Write-Host Installing Nuget...  -ForegroundColor Green
 $ProgressPreference='Silent'
 $url = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 (New-Object Net.WebClient).DownloadFile($url, "$env:temp\temp\nuget.exe")
@@ -41,7 +41,7 @@ Add-AppxPackage -Path "$path\Microsoft.UI.Xaml.2.7.0\tools\AppX\x64\Release\Micr
 
 #Download winget and license file
 Write-Host
-Write-Host Installing Windows Package Manager...
+Write-Host Installing Windows Package Manager...    -ForegroundColor Green
 function getLink($match) {
     $uri = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
     $get = Invoke-RestMethod -uri $uri -Method Get -ErrorAction stop
@@ -61,7 +61,7 @@ $licenseName = 'license1.xml'
 
 Add-AppxProvisionedPackage -Online -PackagePath $fileName -LicensePath $licenseName | Out-Null
 Write-Host
-Write-Host Installed packages:
+Write-Host Installed packages: -ForegroundColor Green
 Write-Host
 # Checking installed apps
 
